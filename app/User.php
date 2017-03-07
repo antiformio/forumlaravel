@@ -25,7 +25,14 @@ class User extends Authenticatable
     ];
 
 
-
+    /**
+     *
+     * Um user tem um role (pertence a um role)
+     *
+     * QUANDO SE USA belongsTo BASICAMENTE ESTAMOS A DIZER QUE A TABELA USERS TEM DE TER UM role_id
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role(){
 
         return $this->belongsTo('App\Role');
