@@ -38,7 +38,7 @@ class AdminUsersController extends Controller
          * A estrutura da lista será key=>value, ou seja por exemplo:
          *              key=1 e value=administrador
          */
-        $roles=Role::pluck('name','id')->all();
+        $roles=Role::lists('name','id')->all();
 
         return view('admin.users.create', compact('roles'));
     }
@@ -51,7 +51,16 @@ class AdminUsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        dd($request);
+
+        User::create([
+            'is_active' => $request->get('is_active'),
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'role_id' => $request->get('role_id'),
+            'password' => bcrypt($request->get('password'))
+        ]);
+
+        return redirect('/admin/users');
     }
 
     /**

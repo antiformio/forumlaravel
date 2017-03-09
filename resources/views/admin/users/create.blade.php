@@ -9,7 +9,7 @@
                 Abrir o formulário com o método POST para poder usar o store do controller.
                     Consultar route:list
             --}}
-            {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store'])  !!}
+            {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store','files'=>true])  !!}
 
                 <div class="form-group">
                     {!! Form::label('name','Nome:') !!}
@@ -22,8 +22,8 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('status', 'Estado: ') !!}
-                    {!! Form::select('status',array(0=>'Activo',1=>'Inactivo'), null, ['class'=>'form-control']) !!}
+                    {!! Form::label('is_active', 'Estado: ') !!}
+                    {!! Form::select('is_active',[''=>'Estado do utilizador'] + array(1=>'Activo',0=>'Inactivo'), null, ['class'=>'form-control']) !!}
                  </div>
 
                     {{--
@@ -33,6 +33,11 @@
                 <div class="form-group">
                     {!! Form::label('role_id', 'Role: ') !!}
                     {!! Form::select('role_id',[''=>'Ecolha um Role para o user'] + $roles, null, ['class'=>'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('file', 'Foto: ') !!}
+                    {!! Form::file('file', null, ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
