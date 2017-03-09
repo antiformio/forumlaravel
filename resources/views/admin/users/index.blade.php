@@ -1,1 +1,39 @@
-<h1>Está a funcionar</h1>
+@extends('layouts.admin')
+
+
+@section('content')
+
+
+<h1>Users</h1>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Criado</th>
+        <th>Actualizado</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    @foreach($users as $user)
+
+
+    <tr>
+        <td>{{$user->id}}</td>
+        <td>{{$user->name}}</td>
+        <td>{{$user->email}}</td>
+        <td>{{$user->created_at->diffForHumans()}}</td>
+        <td>{{$user->updated_at->diffForHumans()}}</td>
+      </tr>
+
+     @endforeach
+
+    </tbody>
+  </table>
+
+
+    @endsection

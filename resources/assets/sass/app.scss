@@ -1,2 +1,17 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+/**
+
+  Alterações de visual são feitas aqui,
+  no terminal dar gulp.
+   o ficheiro é depois compilado para public/css/app.css
+
+
+
+ */
+#admin-page{
+
+    padding-top: 0px; // Serve para tirar o espaçamento que existe na parte de cima da pagina do administrador
+
+
+}

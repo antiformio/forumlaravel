@@ -1,1 +1,1 @@
-{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA","file":"app.css","sourcesContent":[]}
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAGA;EAEI,iBAAiB,EAGpB","file":"app.css","sourcesContent":["// @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";\n\n\n#admin-page{\n\n    padding-top: 0px;\n\n\n}\n"]}
