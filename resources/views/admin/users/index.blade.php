@@ -27,14 +27,14 @@
 
     <tr>
         <td>{{$user->id}}</td>
-        <td>{{$user->name}}</td>
+        <td><a href=" {{ route('admin.users.edit',$user->id) }}">{{$user->name}}</a></td>
         <td>{{$user->email}}</td>
         <td>{{$user->role ? $user->role->name : 'O user não tem Role'}}</td>
         <td>{{$user->is_active == 1 ? 'Activo' : 'Inactivo' }}</td>
         <td>{{$user->created_at->diffForHumans()}}</td>
         <td>{{$user->updated_at->diffForHumans()}}</td>
 
-        <td><img height="50" src="{{$user->photo ?  $user->photo->file : 'Não tem foto'}}"></td>
+        <td><img height="50" src="{{$user->photo ?  $user->photo->file : '/images/noimage.jpg'}}"></td>
 
       </tr>
 

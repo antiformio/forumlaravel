@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\UsersRequest;
 use App\Photo;
 use App\Role;
@@ -93,7 +94,10 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles=Role::lists('name','id')->all();
+
+        return view('admin.users.edit',compact('user','roles'));
     }
 
     /**
@@ -103,9 +107,26 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditUserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $input = $request->all();
+
+        if($file = $request->file('photo_id')){
+
+            $name =time() . $file->getClientOriginalName(); //Adiciona a data ao nome da foto
+            $file->move('images',$name);
+
+            // Quando a foto é criada, ficamos automáticamente com um ID associado,
+            // que podemos usar na linha de baixo
+            $photo = Photo::create(['file'=>$name]);
+
+            $input['photo_id']=$photo->id;
+        }
+
+        $user->update($input);
+        return redirect('/admin/users');
+
     }
 
     /**
