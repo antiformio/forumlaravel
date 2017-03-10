@@ -11,6 +11,13 @@
             --}}
             {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store','files'=>true])  !!}
 
+
+            {{-- O primeiro campo "name" tem de ser igual ao nome do atributo na Base de dados
+            tanto no label como no text. Aplica-se a todos os nomes dos campos dos
+            formularios. Ex. name, email, password, photo_id, role_id --}}
+
+
+
                 <div class="form-group">
                     {!! Form::label('name','Nome:') !!}
                     {!! Form::text('name', null, ['class'=>'form-control']) !!}
@@ -36,8 +43,8 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('file', 'Foto: ') !!}
-                    {!! Form::file('file', null, ['class'=>'form-control']) !!}
+                    {!! Form::label('photo_id', 'Foto: ') !!}
+                    {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">

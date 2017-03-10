@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    public $directory = "/images/";
     /**
      * The attributes that are mass assignable.
      *
@@ -38,6 +40,23 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
 
     }
+
+
+    /**
+     *
+     * Um user tem uma foto (pertence a uma foto)
+     *
+     * QUANDO SE USA belongsTo BASICAMENTE ESTAMOS A DIZER QUE A TABELA USERS TEM DE TER UM photo_id
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function photo(){
+
+
+        return $this->belongsTo('App\Photo');
+
+    }
+
 
 
 

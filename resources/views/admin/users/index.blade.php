@@ -4,7 +4,7 @@
 @section('content')
 
 
-<h1>Users</h1>
+<h1>Utilizadores</h1>
 
 
 <table class="table">
@@ -17,6 +17,7 @@
         <th>Status</th>
         <th>Criado</th>
         <th>Actualizado</th>
+        <th>Foto</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,9 @@
         <td>{{$user->is_active == 1 ? 'Activo' : 'Inactivo' }}</td>
         <td>{{$user->created_at->diffForHumans()}}</td>
         <td>{{$user->updated_at->diffForHumans()}}</td>
+
+        <td><img height="50" src="{{$user->photo ?  $user->photo->file : 'Não tem foto'}}"></td>
+
       </tr>
 
      @endforeach
