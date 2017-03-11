@@ -3,6 +3,13 @@
 
 @section('content')
 
+    {{--Verificar se foram passadas flash messages do controller
+            no controller é passado o parametro nome (message neste caso)
+            outro que é a classe e por fim o info (ou é success, ou danger)--}}
+    @if(Session::has('message'))
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
+            {{ Session::get('message') }}</p>
+    @endif
 
 <h1>Utilizadores</h1>
 

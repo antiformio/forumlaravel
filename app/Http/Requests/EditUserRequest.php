@@ -25,7 +25,7 @@ class EditUserRequest extends Request
     {
         return [
             'name'=>'required',
-            'email'=>'required|email|max:255|unique:users',
+            'email'=>'required|email',
             'role_id'=>'required',
             'is_active'=>'required',
         ];

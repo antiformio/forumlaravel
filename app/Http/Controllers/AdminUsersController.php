@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -70,7 +71,8 @@ class AdminUsersController extends Controller
         }
 
         User::create($input);
-
+        Session::flash('message', 'O user foi criado com sucesso !!!!');
+        Session::flash('alert-class', 'alert-success');
 
         return redirect('/admin/users');
     }
@@ -125,6 +127,9 @@ class AdminUsersController extends Controller
         }
 
         $user->update($input);
+
+        Session::flash('message', 'O user foi editado com sucesso !!!!');
+        Session::flash('alert-class', 'alert-info');
         return redirect('/admin/users');
 
     }
@@ -137,6 +142,12 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+
+        // Flash message para enviar para a ser mostrada na próxima página (neste caso em /admin/users)
+        Session::flash('message', 'O user foi apagado com sucesso !!!!');
+        Session::flash('alert-class', 'alert-danger');
+
+        return redirect('/admin/users');
     }
 }

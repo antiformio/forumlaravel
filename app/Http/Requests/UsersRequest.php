@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersRequest extends Request
 {
@@ -37,4 +38,7 @@ class UsersRequest extends Request
             'password'=>'required'
         ];
     }
+
+
+
 }

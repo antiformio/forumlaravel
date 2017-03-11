@@ -58,6 +58,17 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * Método a ser usado pelo Admin middleware.
+     * Retorna true se o user é administrator false se não é
+     */
+    public function isAdmin(){
 
+        if($this->role->name == 'administrator'){
+                return true;
+            }
+            return false;
+
+    }
 
 }
