@@ -23,7 +23,7 @@
         <th>Role</th>
         <th>Status</th>
         <th>Criado</th>
-        <th>Actualizado</th>
+        <th>Modificado</th>
         <th>Foto</th>
       </tr>
     </thead>

@@ -58,6 +58,8 @@ class User extends Authenticatable
     }
 
 
+
+
     /**
      * Método a ser usado pelo Admin middleware.
      *
@@ -74,5 +76,15 @@ class User extends Authenticatable
 
 
     }
+
+    /**
+     * Um user tem vários Posts....
+     */
+    public function posts(){
+
+        return $this->hasMany('App\Post');
+
+    }
+
 
 }

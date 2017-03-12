@@ -3,4 +3,4 @@
 
     <h1>Administrador</h1>
 
-    @endsection
+@endsection
