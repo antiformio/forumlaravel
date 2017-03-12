@@ -14,52 +14,50 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('app.scss')
 
+
     /**
      * Incorporar os ficheiros de css que estão em resources/assets/css/libs
      */
-    .styles([
+        .styles([
 
-        'libs/bootstrap.css',
-        'libs/bootstrap.min.css',
-        'libs/blog-post.css',
-        'libs/font-awesome.css',
-        'libs/metisMenu.css',
-        'libs/sb-admin-2.css',
-        'libs/styles.css'
+
+            'libs/blog-post.css',
+            'libs/bootstrap.css',
+            'libs/font-awesome.css',
+            'libs/metisMenu.css',
+            'libs/sb-admin-2.css'
+
+            /**
+             * Aqui é o ficheiro onde vão ser compilados todos os ficheiros em cima
+             *      se por acaso não existir, cria-o
+             */
+        ], './public/css/libs.css')
+
 
 
 
 
         /**
-         * Aqui é o ficheiro onde vão ser compilados todos os ficheiros em cima
-         *      se por acaso não existir, cria-o
+         * Aqui estão os scripts da pasta resources/assets/js/libs
          */
-    ], './public/css/libs.css')
-
-
-
-
-    /**
-     * Aqui estão os scripts da pasta resources/assets/js/libs
-     */
         .scripts([
 
+            /**
+             *Aqui é o ficheiro onde vão ser compilados todos os scripts enunciados em cima,
+             *      se a pasta nao existir, então cria-a
+             */
             'libs/jquery.js',
             'libs/bootstrap.js',
-            'libs/bootstrap.min.js',
             'libs/metisMenu.js',
             'libs/sb-admin-2.js',
             'libs/scripts.js'
 
 
 
-            /**
-             *Aqui é o ficheiro onde vão ser compilados todos os scripts enunciados em cima,
-             *      se a pasta nao existir, então cria-a
-             */
-        ], './public/js/libs.js' )
 
 
+
+        ], './public/js/libs.js')
 
 
 });
