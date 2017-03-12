@@ -142,12 +142,20 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        User::findOrFail($id)->delete();
+        $user = User::findOrFail($id);
 
-        // Flash message para enviar para a ser mostrada na próxima página (neste caso em /admin/users)
-        Session::flash('message', 'O user foi apagado com sucesso !!!!');
-        Session::flash('alert-class', 'alert-danger');
+        unlink(public_path() . $user->photo->file);
 
+        if($user->delete()){
+            // Flash message para enviar para a ser mostrada na próxima página (neste caso em /admin/users)
+            Session::flash('message', 'O user foi apagado com sucesso !!!!');
+            Session::flash('alert-class', 'alert-danger');
+            return redirect('/admin/users');
+        }
+
+        // Se não apagou por alguma razao entao mostra o warning
+        Session::flash('message', 'Ocorreu um erro ao apagar o user !!!!');
+        Session::flash('alert-class', 'alert-warning');
         return redirect('/admin/users');
     }
 }
