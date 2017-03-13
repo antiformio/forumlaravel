@@ -65,6 +65,7 @@
 
             </div>
         </div>
+    </div>
 
     @include('includes.form_errors') {{--Para adicionar o pedaço de código de verificação de erros--}}
 
