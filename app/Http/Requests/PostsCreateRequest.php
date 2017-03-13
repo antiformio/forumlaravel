@@ -25,7 +25,7 @@ class PostsCreateRequest extends Request
     {
         return [
             'title' => 'required|unique:posts|max:255',
-            //'category_id' => 'required',
+            'category_id' => 'required',
             //'photo_id' => 'required',
             'body' => 'required'
 

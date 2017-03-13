@@ -18,10 +18,10 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>Foto</th>
             <th>User</th>
             <th>Titulo</th>
             <th>Conteúdo</th>
-            <th>Foto</th>
             <th>Categoria</th>
             <th>Criado</th>
             <th>Modificado</th>
@@ -36,11 +36,11 @@
 
             <tr>
                 <td>{{$post->id}}</td>
+                <td><img height="50" src="{{$post->photo ?  $post->photo->file : '/images/noimage.jpg'}}"></td>
                 <td><a href="{{route('admin.users.show', $post->user->id)}}">{{$post->user->name}}</a></td>
                 <td><a href=" {{ route('admin.posts.edit',$post->id) }}">{{$post->title}}</a></td>
                 <td>{{$post->body}}</td>
-                <td>{{$post->photo_id}}</td>
-                <td>{{$post->category_id}}</td>
+                <td>{{$post->category ? $post->category->name : 'Sem Categoria'}}</td>
                 <td>{{$post->created_at->diffForHumans()}}</td>
                 <td>{{$post->updated_at->diffForHumans()}}</td>
 
