@@ -36,7 +36,7 @@
                 {!! Form::label('body', 'Conteúdo : ') !!}
                 {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 
-                <div class="col-sm-6">
+                <div class="form-group">
                     {!! Form::submit('Update Post', ['class'=>'btn btn-primary col-sm-6']) !!}
 
 
@@ -44,18 +44,18 @@
 
 
                     {{--
-                                    Abrir o formulário com o método DELETE para poder usar o store do controller.
+                                    Abrir o formulário com o método DELETE para poder usar o destroy do controller.
                                       Consultar route:list
                                   --}}
 
-                    {{--{!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]])  !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]])  !!}
 
 
-                    {!! Form::submit('Apagar User', ['class'=>'btn btn-danger col-sm-6']) !!}
+                    {!! Form::submit('Apagar Post', ['class'=>'btn btn-danger col-sm-6']) !!}
 
 
 
-                    {!! Form::close() !!}--}}
+                    {!! Form::close() !!}
 
 
                 </div>

@@ -172,6 +172,31 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        $post = Post::findOrFail($id);
+
+        unlink(public_path() . $post->photo->file);
+
+        if($user->posts()->whereId($id)->first() != null){
+
+            $user->posts()->whereId($id)->first()->delete();
+            // Flash message para enviar para a ser mostrada na próxima página (neste caso em /admin/users)
+            Session::flash('message', 'O Post foi apagado com sucesso !!!!');
+            Session::flash('alert-class', 'alert-success');
+            return redirect('/admin/posts');
+        }
+        if($post->user_id != $user->id){
+
+            Session::flash('message', 'Não tem permições para apagar este post...');
+            Session::flash('alert-class', 'alert-danger');
+            return redirect('/admin/posts');
+
+        }
+
+        // Se não apagou por alguma razao entao mostra o warning
+        Session::flash('message', 'Ocorreu um erro ao apagar o Post !!!!');
+        Session::flash('alert-class', 'alert-warning');
+        return redirect('/admin/posts');
     }
+
 }

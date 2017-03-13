@@ -39,7 +39,7 @@
                 {!! Form::label('photo_id', 'Foto: ') !!}
                 {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
 
-                <div class="col-sm-6">
+                <div class="form-group">
                     {!! Form::submit('Update User', ['class'=>'btn btn-primary col-sm-6']) !!}
 
 
@@ -47,7 +47,7 @@
 
 
                     {{--
-                                    Abrir o formulário com o método DELETE para poder usar o store do controller.
+                                    Abrir o formulário com o método DELETE para poder usar o destroy do controller.
                                       Consultar route:list
                                   --}}
 
