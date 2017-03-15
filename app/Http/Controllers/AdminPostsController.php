@@ -54,7 +54,7 @@ class AdminPostsController extends Controller
 
 
 
-
+        // Se foi passada por parametro uma foto para o post então:
         if($file = $request->file('photo_id')){
 
             $name =time() . $file->getClientOriginalName(); //Adiciona a data ao nome da foto
@@ -65,6 +65,13 @@ class AdminPostsController extends Controller
             $photo = Photo::create(['file'=>$name]);
 
             $input['photo_id']=$photo->id;
+        }
+        // Se não foi dada nenhuma imagem ao post, procura a noimage.jpg e atribui-lhe
+        else{
+
+            $photo = Photo::where('file','noimage.jpg')->first();
+            $input['photo_id']=$photo->id;
+
         }
 
 
@@ -175,7 +182,10 @@ class AdminPostsController extends Controller
         $user = Auth::user();
         $post = Post::findOrFail($id);
 
-        unlink(public_path() . $post->photo->file);
+        // Se a imagem do post não for a noimage.jpg então apaga-a
+        if($user->photo->file != '/images/noimage.jpg'){
+            unlink(public_path() . $user->photo->file);
+        }
 
         if($user->posts()->whereId($id)->first() != null){
 

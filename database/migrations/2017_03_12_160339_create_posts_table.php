@@ -20,6 +20,12 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+
+
+            // Usa a foreign key 'user_id' e diz que é o campo 'id' na tabela users
+            //      onDelete quer dizer que quando for apagado, apaga também todos
+            //      os posts (estamos na tabela posts) desse user
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

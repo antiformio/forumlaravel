@@ -58,6 +58,7 @@ class AdminUsersController extends Controller
         $input = $request->all();
         $input['password']=bcrypt($request->get('password'));
 
+        // Se recebeu uma foto por parametro então usa essa
         if($file = $request->file('photo_id')){
 
             $name =time() . $file->getClientOriginalName(); //Adiciona a data ao nome da foto
@@ -68,6 +69,13 @@ class AdminUsersController extends Controller
             $photo = Photo::create(['file'=>$name]);
 
             $input['photo_id']=$photo->id;
+        }
+        // Caso não tenha recebido, então usa a noImage
+        else{
+
+            $photo = Photo::where('file','noimage.jpg')->first();
+            $input['photo_id']=$photo->id;
+
         }
 
         User::create($input);
@@ -145,7 +153,13 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        unlink(public_path() . $user->photo->file);
+        // Se a foto que o user tem for a noImage, não apagar!! só apaga se for diferente
+        if($user->photo->file != '/images/noimage.jpg'){
+            unlink(public_path() . $user->photo->file);
+         }
+
+
+
 
         if($user->delete()){
             // Flash message para enviar para a ser mostrada na próxima página (neste caso em /admin/users)
