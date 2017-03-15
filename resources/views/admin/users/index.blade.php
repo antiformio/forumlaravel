@@ -41,7 +41,7 @@
         <td>{{$user->created_at->diffForHumans()}}</td>
         <td>{{$user->updated_at->diffForHumans()}}</td>
 
-        <td><img height="50" src="{{$user->photo ?  $user->photo->file : '/images/noimage.jpg'}}"></td>
+        <td><img height="50" src="{{$user->photo->file}}"></td>
 
       </tr>
 

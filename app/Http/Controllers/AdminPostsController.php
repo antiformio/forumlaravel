@@ -183,8 +183,8 @@ class AdminPostsController extends Controller
         $post = Post::findOrFail($id);
 
         // Se a imagem do post não for a noimage.jpg então apaga-a
-        if($user->photo->file != '/images/noimage.jpg'){
-            unlink(public_path() . $user->photo->file);
+        if($post->photo->file != '/images/noimage.jpg'){
+            unlink(public_path() . $post->photo->file);
         }
 
         if($user->posts()->whereId($id)->first() != null){

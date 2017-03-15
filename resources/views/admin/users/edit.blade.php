@@ -9,7 +9,7 @@
 
         <div class="col-sm-3">
 
-            <img src="{{$user->photo ? $user->photo->file : '/images/noimage.jpg'}}" alt=""
+            <img src="{{$user->photo->file}}" alt=""
                  class="img-responsive img-rounded">
 
         </div>

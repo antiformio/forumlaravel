@@ -36,7 +36,7 @@
 
             <tr>
                 <td>{{$post->id}}</td>
-                <td><img height="50" src="{{$post->photo ?  $post->photo->file : '/images/noimage.jpg'}}"></td>
+                <td><img height="50" src="{{$post->photo->file}}"></td>
                 <td>{{$post->category ? $post->category->name : 'Sem Categoria'}}</td>
                 <td><a href=" {{ route('admin.posts.edit',$post->id) }}">{{$post->title}}</a></td>
                 <td>{{$post->body}}</td>
