@@ -79,9 +79,17 @@ class AdminCategoriesController extends Controller
         $category = Category::findOrFail($id);
 
 
-        $category->update($request->all());
+        if($category->update($request->all())){
+            Session::flash('message', 'A categoria foi editada com sucesso !!!!');
+            Session::flash('alert-class', 'alert-success');
+            return redirect('/admin/categories');
+        }else{
+            Session::flash('message','Não foi possível editar a categoria...');
+            Session::flash('alert-class','alert-danger');
+            return redirect('/admin/categories');
+        }
 
-        return redirect('/admin/categories');
+
     }
 
     /**
