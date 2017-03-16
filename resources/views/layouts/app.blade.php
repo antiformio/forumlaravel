@@ -68,21 +68,21 @@
 
                             <ul class="dropdown-menu dropdown-tasks">
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="http://projecto.dev/admin">Página de Administrador</a>
-                                    </li>
+
 
                                     <li>
-                                        <a href="{{route('admin.users.index')}}">Listar Utilizadores</a>
+                                        <a href="{{route('admin.users.index')}}">Utilizadores</a>
                                     </li>
 
 
 
                                     <li>
-                                        <a href="{{route('admin.users.create')}}">Criar Utilizador</a>
+                                        <a href="{{route('admin.posts.index')}}">Posts</a>
                                     </li>
 
-
+                                    <li>
+                                        <a href="{{route('admin.categories.index')}}">Categorias</a>
+                                    </li>
 
                                 </ul>
                             </ul>
