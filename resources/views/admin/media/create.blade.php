@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-{{--Este estilo só corre nesta pagina, para evitar ter muitos requests na aplicação (no controller)--}}
+{{--Este estilo só corre nesta pagina. Para saber mais da utilização ver dropzone.com--}}
 @section('styles')
     {{--Escrever link.css e dar tab--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css" class="css">

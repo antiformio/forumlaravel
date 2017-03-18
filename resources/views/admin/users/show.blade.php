@@ -8,10 +8,10 @@
     <div class="row">
 
         <div class="col-sm-3">
-
+            @if($user->photo->file)
             <img src="{{$user->photo->file}}" alt=""
                  class="img-responsive img-rounded">
-
+            @endif
         </div>
 
         <div class="col-sm-9">

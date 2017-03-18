@@ -84,6 +84,10 @@
                                         <a href="{{route('admin.categories.index')}}">Categorias</a>
                                     </li>
 
+                                    <li>
+                                        <a href="{{route('admin.media.index')}}">Media</a>
+                                    </li>
+
                                 </ul>
                             </ul>
 

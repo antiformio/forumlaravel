@@ -38,6 +38,31 @@ class AdminMediasController extends Controller
 
         Photo::create(['file'=>$name]);
 
+
     }
 
+    public function destroy($id){
+
+        $photo = Photo::findOrFail($id);
+
+        unlink(public_path() . $photo->file);
+
+        if($photo->delete()){
+
+            Session::flash('message','Foto '.$photo->file. ' apagada com sucesso');
+            Session::flash('alert-class', 'alert-success');
+            return redirect('/admin/media');
+
+        }else{
+
+            Session::flash('message', 'Ocorreu um erro ao apagar a Foto '.$photo->file);
+            Session::flash('alert-class', 'alert-warning');
+            return redirect('/admin/media');
+
+        }
+
+
+
+
+    }
 }
