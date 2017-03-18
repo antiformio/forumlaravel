@@ -20,8 +20,6 @@
             {!! Form::model($post, ['method'=>'PATCH', 'action'=>['AdminPostsController@update', $post->id],'files'=>true]) !!}
 
             <div class="form-group">
-                {!! Form::label('user_id', 'User : ') !!}
-
 
                 {!! Form::label('category_id', 'Categoria : ') !!}
                 {!! Form::select('category_id',$categories, null, ['class'=>'form-control']) !!}

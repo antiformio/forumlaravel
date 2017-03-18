@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Photo;
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -46,6 +48,23 @@ class AdminMediasController extends Controller
         $photo = Photo::findOrFail($id);
 
         unlink(public_path() . $photo->file);
+
+        /**
+         * Caso a foto que apagamos esteja associada a um user ou a um post,
+         *  então atribui a foto noimage.jpg a esse user ou post
+         */
+        if($photo->post){
+            $post = Post::findOrFail($photo->post->id);
+            $newPostPhoto=Photo::where('file','noimage.jpg')->first();
+            $post['photo_id']=$newPostPhoto->id;
+            $post->update();
+        }elseif ($photo->user){
+            $user = User::findOrFail($photo->user->id);
+            $newUserPhoto=Photo::where('file','noimage.jpg')->first();
+            $user['photo_id']=$newUserPhoto->id;
+            $user->update();
+
+        }
 
         if($photo->delete()){
 

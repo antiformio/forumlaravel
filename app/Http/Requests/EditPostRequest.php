@@ -24,7 +24,7 @@ class EditPostRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required|max:255',
             'category_id' => 'required',
             //'photo_id' => 'required',
             'body' => 'required'
