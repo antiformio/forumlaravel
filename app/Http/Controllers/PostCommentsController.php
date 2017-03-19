@@ -19,7 +19,8 @@ class PostCommentsController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index');
+        $comments = Comment::all();
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -75,7 +76,9 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view('admin.comments.show', compact('comment'));
     }
 
     /**
@@ -98,7 +101,10 @@ class PostCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comment::findOrFail($id)->update($request->all());
+
+        return redirect('/admin/comments');
+
     }
 
     /**
@@ -109,6 +115,19 @@ class PostCommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Comment::findOrFail($id)->delete()){
+
+            Session::flash('message','O comentário foi apagado !!!');
+            Session::flash('alert-class','alert-danger');
+            return redirect('/admin/comments');
+
+        }else{
+            Session::flash('message','Não foi possível apagar o comentário...');
+            Session::flash('alert-class','alert-info');
+            return redirect('/admin/comments');
+
+        }
+
+
     }
 }
