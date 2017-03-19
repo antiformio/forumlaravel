@@ -88,6 +88,10 @@
                                         <a href="{{route('admin.media.index')}}">Media</a>
                                     </li>
 
+                                    <li>
+                                        <a href="{{route('admin.comments.index')}}">Comentários</a>
+                                    </li>
+
                                 </ul>
                             </ul>
 
