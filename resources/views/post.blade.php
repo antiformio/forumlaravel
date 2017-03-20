@@ -3,10 +3,6 @@
 @section('content')
 
 
-
-
-
-
     <!-- Title -->
     <h1>{{$post->title}}</h1>
 
@@ -17,7 +13,16 @@
 
     <!-- Author -->
     <p class="lead">
-        by <a href="#">{{$post->user->name}}</a>
+        {{--Se o user estiver logado E for admin, então pode clicar no nome do user para ver o seu perfil--}}
+        @if(Auth::check())
+            @if(Auth::user()->isAdmin())
+            by <a href="{{route('admin.users.show',Auth::user()->id)}}">{{$post->user->name}}</a>
+            @endif
+
+        {{--Se não estiver logado, mostra só o nome do poster sem link--}}
+        @else
+            by {{$post->user->name}}
+        @endif
     </p>
 
     <hr>
