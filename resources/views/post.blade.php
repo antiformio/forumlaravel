@@ -16,7 +16,7 @@
         {{--Se o user estiver logado E for admin, então pode clicar no nome do user para ver o seu perfil--}}
         @if(Auth::check())
             @if(Auth::user()->isAdmin())
-            by <a href="{{route('admin.users.show',Auth::user()->id)}}">{{$post->user->name}}</a>
+            by <a href="{{route('admin.users.show',$post->user->id)}}">{{$post->user->name}}</a>
             @endif
 
         {{--Se não estiver logado, mostra só o nome do poster sem link--}}
