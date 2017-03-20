@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Photo;
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -47,7 +48,7 @@ class PostCommentsController extends Controller
             'post_id'   => $request->post_id,
             'author'    => $user->name,
             'email'     => $user->email,
-            'photo'     => Photo::findOrFail($user->photo->id)->file,
+            'photo'     => $user->photo->file,
             'body'      => $request->body
 
         ];
@@ -76,9 +77,13 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
-        $comment = Comment::findOrFail($id);
 
-        return view('admin.comments.show', compact('comment'));
+
+        $post = Post::findOrFail($id);
+
+        $comments = $post->comments;
+
+        return view('admin.comments.show', compact('comments','post'));
     }
 
     /**

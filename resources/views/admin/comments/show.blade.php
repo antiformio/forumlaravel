@@ -2,9 +2,7 @@
 
 @section('content')
 
-
-    <h1>Comentário ao post <a href="{{route('home.post',$comment->post->id )}}">{{$comment->post->title}}</a></h1>
-
+    <h1>Comentários ao post <a href="{{route('home.post', $post->id)}}">{{$post->title}}</a></h1>
 
     <div class="row">
 
@@ -13,7 +11,7 @@
         <div class="col-sm-9">
 
 
-
+        @foreach($comments as $comment)
 
             <div class="form-group">
 
@@ -80,6 +78,7 @@
 
 
             </div>
+            @endforeach
         </div>
     </div>
 

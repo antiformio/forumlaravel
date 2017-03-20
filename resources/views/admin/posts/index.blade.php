@@ -22,6 +22,7 @@
             <th>Categoria</th>
             <th>Titulo</th>
             <th>Conteúdo</th>
+            <th>Comentários</th>
             <th>Criado</th>
             <th>Modificado</th>
             <th>User</th>
@@ -39,10 +40,12 @@
                 <td><img height="50" src="{{$post->photo->file}}"></td>
                 <td>{{$post->category ? $post->category->name : 'Sem Categoria'}}</td>
                 <td><a href=" {{ route('admin.posts.edit',$post->id) }}">{{$post->title}}</a></td>
-                <td>{{$post->body}}</td>
+                <td>{{\Illuminate\Support\Str::words($post->body,4)}}</td>
+                <td><a href="{{route('admin.comments.show',$post->id)}}">Ver Comentários</a></td>
                 <td>{{$post->created_at->diffForHumans()}}</td>
                 <td>{{$post->updated_at->diffForHumans()}}</td>
                 <td><a href="{{route('admin.users.show', $post->user->id)}}">{{$post->user->name}}</a></td>
+                <td><a href="{{route('home.post', $post->id)}}">Ver Post</a></td>
 
 
             </tr>

@@ -12,6 +12,7 @@ class Comment extends Model
         'post_id',
         'author',
         'email',
+        'photo',
         'body',
         'is_active'
 
