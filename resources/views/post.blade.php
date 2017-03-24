@@ -113,7 +113,9 @@
 
                 <div class="view-comments-container">
 
-                    <button class="toggle-comments btn btn-info pull-right">Ver Respostas</button> {{--Vers/Esconder replies ao comentário--}}
+
+                    <button class="toggle-comments btn btn-info pull-right">Ver Respostas</button> {{--Ver/Esconder replies ao comentário--}}
+
 
 
                     <div class="comments-replies col-sm-9">
@@ -121,7 +123,7 @@
 
                         @foreach($comment->replies as $reply)
 
-
+                            @if($reply->is_active == 1)
 
                             <!-- Replies ao comment -->
                                 <div id="nested-comment" class="media">
@@ -140,6 +142,8 @@
                                 <!-- Fim dos replies ao comment -->
 
                                  </div>
+
+                            @endif
                             @endforeach
 
 
@@ -178,23 +182,34 @@
 
             @else
                 {{--Caso não haja replies ao comentário, então mostra directamente o formulário de submeter resposta ao comment--}}
-                    {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply'])  !!}
+                <div class="comment-reply-container">
 
 
-                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                    <button class="toggle-reply btn btn-primary pull-left">Responder</button>{{--Ver/esconder form para responder ao comentário--}}
 
-                    <div class="form-group">
+                    <div class="comment-reply">
 
-                        {!! Form::label('body','Resposta:') !!}
-                        {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>1]) !!}
+
+                        {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply'])  !!}
+
+
+                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+
+                        <div class="form-group">
+
+                            {!! Form::label('body','Resposta:') !!}
+                            {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>2]) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary']) !!}
+                        </div>
+
+
+                        {!! Form::close() !!}
+
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary']) !!}
-                    </div>
-
-
-                    {!! Form::close() !!}
+                </div>
 
                 @endif
 

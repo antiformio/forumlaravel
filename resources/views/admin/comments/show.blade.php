@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+    @if(count($comments) >0)
     <h1>Comentários ao post <a href="{{route('home.post', $post->id)}}">{{$post->title}}</a></h1>
 
     <div class="row">
@@ -20,7 +20,9 @@
                 <p><b>Comentário: </b>{{$comment->body}}</p>
                 <p><b>Estado: </b>{{$comment->is_active == 1 ? 'Activo' : 'Inactivo' }}</p>
                 <p><b>Criado a: </b>{{$comment->created_at->diffForHumans()}}</p>
-
+                @if(count($comment->replies)>0)
+                <p><a href="{{ route('admin.comments.replies.show', $comment->id) }}">Ver Respostas ao comentário</a></p>
+                @endif
 
             </div>
 
@@ -79,6 +81,9 @@
 
             </div>
             @endforeach
+            @else
+                <h1>Não existem comentários ao Post...</h1>
+            @endif
         </div>
     </div>
 

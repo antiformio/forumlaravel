@@ -27,6 +27,7 @@
                           <th>Post</th>
                           <th>is Active</th>
                           <th>Comentário</th>
+                          <th>Respostas</th>
                           <th>Autor</th>
                           <th>Email</th>
                           <th>Criado a</th>
@@ -43,6 +44,7 @@
                             <td><a href="{{route('home.post',$comment->post->id )}}">{{$comment->post->title}}</a></td>
                             <td>{{$comment->is_active == 1 ? 'Activo' : 'Inactivo' }}</td>
                             <td>{{\Illuminate\Support\Str::words($comment->body,3)}}</td>
+                            <td><a href="{{ route('admin.comments.replies.show', $comment->id) }}">Ver Respostas</a></td>
                             <td><a href="{{route('admin.users.show',$comment->post->user_id)}}">{{$comment->author}}</a></td>
                             <td>{{$comment->email}}</td>
                             <td>{{$comment->created_at->diffForHumans()}}</td>
