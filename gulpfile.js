@@ -23,6 +23,7 @@ elixir(function(mix) {
 
             'libs/blog-post.css',
             'libs/bootstrap.css',
+            'libs/bootstrap.min.css',
             'libs/font-awesome.css',
             'libs/metisMenu.css',
             'libs/sb-admin-2.css'
@@ -42,10 +43,7 @@ elixir(function(mix) {
          */
         .scripts([
 
-            /**
-             *Aqui é o ficheiro onde vão ser compilados todos os scripts enunciados em cima,
-             *      se a pasta nao existir, então cria-a
-             */
+
             'libs/jquery.js',
             'libs/bootstrap.js',
             'libs/metisMenu.js',
@@ -55,7 +53,10 @@ elixir(function(mix) {
 
 
 
-
+            /**
+             *Aqui é o ficheiro onde vão ser compilados todos os scripts enunciados em cima,
+             *      se a pasta nao existir, então cria-a
+             */
 
         ], './public/js/libs.js')
 

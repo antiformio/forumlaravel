@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/**
+
+  Alterações de visual são feitas aqui,
+  no terminal dar gulp.
+   o ficheiro é depois compilado para public/css/app.css
+
+
+
+ */
+#admin-page {
+  padding-top: 0px; }
+
+#nested-comment {
+  margin-top: 60px; }
+
+.comment-reply {
+  display: none; }
+
+.comments-replies {
+  display: none; }
+
+.toggle-reply {
+  margin-top: 30px; }
+
+/*# sourceMappingURL=app.css.map */

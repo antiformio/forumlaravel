@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\CommentReply;
+use App\Http\Requests\RepliesRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CommentRepliesController extends Controller
 {
@@ -37,6 +41,30 @@ class CommentRepliesController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+
+    public function createReply(RepliesRequest $request){
+
+        $user = Auth::user();
+        $data = [
+            'comment_id'   => $request->comment_id,
+            'author'    => $user->name,
+            'email'     => $user->email,
+            'photo'     => $user->photo->file,
+            'body'      => $request->body
+
+        ];
+        if(CommentReply::create($data)){
+            Session::flash('message', 'A resposta foi submetida com sucesso ! Aguarde confirmação do Administrador');
+            Session::flash('alert-class', 'alert-success');
+            return redirect()->back();
+        }else{
+            Session::flash('message','Não foi submeter a resposta...');
+            Session::flash('alert-class','alert-danger');
+            return redirect()->back();
+        }
+
     }
 
     /**

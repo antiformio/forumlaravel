@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-    <h1>Administrador</h1>
+    <h1>Página de administração do blog</h1>
 
 @endsection

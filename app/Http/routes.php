@@ -25,6 +25,7 @@ Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post'
 
 
 
+//Rotas para o administrator
 Route::group(['middleware'=>'admin'],function (){
 
     Route::get('/admin', function (){
@@ -32,7 +33,7 @@ Route::group(['middleware'=>'admin'],function (){
         return view('admin.index');
 
 
-    });
+    })->name('admin.index');
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts','AdminPostsController');
@@ -44,4 +45,12 @@ Route::group(['middleware'=>'admin'],function (){
 
 
 });
+
+//Rotas para o utilizador logado que não é administrator
+Route::group(['middleware'=>'auth'],function (){
+
+    Route::post('comment/reply', 'CommentRepliesController@createReply');
+
+});
+
 

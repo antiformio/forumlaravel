@@ -9,13 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>@yield('title')</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/blog-post.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
@@ -43,7 +38,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            {{--Mostra um atalho para a pagina de administrador caso seja administrador--}}
+            @if(Auth::check())
+                @if(Auth::user()->isAdmin())
+                    <a class="navbar-brand" href="{{ route('admin.index') }}">Admin Page</a>
+                @endif
+            @endif
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -136,6 +136,9 @@
 
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
+
+
+@yield('scripts')
 
 </body>
 

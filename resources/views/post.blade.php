@@ -1,5 +1,7 @@
 @extends('layouts.blog-post')
-
+@section('title')
+    {{$post->title}}
+    @endsection
 @section('content')
 
 
@@ -95,40 +97,172 @@
                 <small>{{$comment->created_at->diffForHumans()}}</small>
             </h4>
             <p>{{$comment->body}}</p>
+
+
+
+
+
+
+
+            {{--Comment Replies ("Nested Comment"--}}
+
+
+
+
+            @if(count ($comment->replies) > 0)
+
+                <div class="view-comments-container">
+
+                    <button class="toggle-comments btn btn-info pull-right">Ver Respostas</button> {{--Vers/Esconder replies ao comentário--}}
+
+
+                    <div class="comments-replies col-sm-9">
+
+
+                        @foreach($comment->replies as $reply)
+
+
+
+                            <!-- Replies ao comment -->
+                                <div id="nested-comment" class="media">
+                                    <a class="pull-left" href="#">
+                                        <img height="64" class="media-object" src="{{$reply->photo}}" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{$reply->author}}
+                                            <small>{{$reply->created_at->diffForHumans()}}</small>
+                                        </h4>
+                                        {{$reply->body}}
+                                    </div>
+
+
+
+                                <!-- Fim dos replies ao comment -->
+
+                                 </div>
+                            @endforeach
+
+
+                            {{--No fim de todos os replies, mostra o botao de responder ao comentário--}}
+                            <div class="comment-reply-container">
+
+
+                                <button class="toggle-reply btn btn-primary pull-left">Responder</button>{{--Ver/esconder form para responder ao comentário--}}
+
+                                <div class="comment-reply">
+
+
+                                    {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply'])  !!}
+
+
+                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+
+                                    <div class="form-group">
+
+                                        {!! Form::label('body','Resposta:') !!}
+                                        {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>2]) !!}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary']) !!}
+                                    </div>
+
+
+                                    {!! Form::close() !!}
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+
+            @else
+                {{--Caso não haja replies ao comentário, então mostra directamente o formulário de submeter resposta ao comment--}}
+                    {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply'])  !!}
+
+
+                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+
+                    <div class="form-group">
+
+                        {!! Form::label('body','Resposta:') !!}
+                        {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>1]) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary']) !!}
+                    </div>
+
+
+                    {!! Form::close() !!}
+
+                @endif
+
         </div>
     </div>
 
     @endforeach
     @endif
-    <!-- Comment -->
-    <div class="media">
-        <a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/64x64" alt="">
-        </a>
-        <div class="media-body">
-            <h4 class="media-heading">Start Bootstrap
-                <small>August 25, 2014 at 9:30 PM</small>
-            </h4>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            <!-- Nested Comment -->
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">Nested Start Bootstrap
-                        <small>August 25, 2014 at 9:30 PM</small>
-                    </h4>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-            </div>
-            <!-- End Nested Comment -->
-        </div>
-    </div>
+
 @endsection
+
+
 @section('categories')
     @foreach($categories as $category)
         <li>{{$category->name}}</li>
     @endforeach
 
-    @endsection
+@endsection
+
+@section('scripts')
+
+
+    <script> {{--Script para mostrar o formulario para responder ao comentário--}}
+
+        $(".comment-reply-container .toggle-reply").click(function(){
+
+           $(this).next().slideToggle("fast");
+
+        });
+
+    </script>
+
+    <script> {{--Script para mostrar todos os replies ao comentário--}}
+
+        $(".view-comments-container .toggle-comments").click(function(){
+
+            $(this).next().slideToggle("fast");
+
+        });
+
+    </script>
+
+    <script> {{--Script para mudar o nome do butão de ver respostas para esconder respostas--}}
+
+        $('.toggle-comments').click(function(){
+            var $this = $(this);
+            $this.toggleClass('toggle-comments');
+            if($this.hasClass('toggle-comments')){
+                $this.text('Ver Respostas');
+            } else {
+                $this.text('Esconder Respostas');
+            }
+        });
+    </script>
+
+    <script> {{--Script para esconder o butão "Responder" deopois de clicado--}}
+
+        $(function(){
+            $(".toggle-reply").on('click',function() {
+                $(this).hide();
+                $(".comment-reply-container").show();
+            });
+        });
+
+    </script>
+
+
+
+@endsection
+
+@include('includes.form_errors') {{--Para adicionar o pedaço de código de verificação de erros--}}

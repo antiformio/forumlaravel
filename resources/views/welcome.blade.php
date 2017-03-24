@@ -8,7 +8,7 @@
                 <div class="panel-heading">Bem-Vindo</div>
 
                 <div class="panel-body">
-                    Forum by Filipe
+                    Blog by Filipe Martins
                 </div>
             </div>
         </div>

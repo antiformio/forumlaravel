@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\RepliesRequest;
 use App\Photo;
 use App\Post;
 use Illuminate\Http\Request;
@@ -40,7 +41,10 @@ class PostCommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    //Usei o RepliesRequest só para não estar a fazer outro Request exactamente igual.
+    //  O que se pede como 'required' é o body da mensagem, tanto para o comment como para o comment reply
+    public function store(RepliesRequest $request)
     {
 
         $user = Auth::user();
