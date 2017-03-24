@@ -83,8 +83,10 @@ class ComposerStaticInit01490ba37348486244e8f1fea1fa9e06
         ),
         'C' => 
         array (
+            'Cviebrock\\EloquentSluggable\\' => 28,
             'Cron\\' => 5,
             'Collective\\Html\\' => 16,
+            'Cocur\\Slugify\\' => 14,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
@@ -221,6 +223,10 @@ class ComposerStaticInit01490ba37348486244e8f1fea1fa9e06
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
         ),
+        'Cviebrock\\EloquentSluggable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
@@ -228,6 +234,10 @@ class ComposerStaticInit01490ba37348486244e8f1fea1fa9e06
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
         'ClassPreloader\\' => 
         array (
@@ -296,6 +306,7 @@ class ComposerStaticInit01490ba37348486244e8f1fea1fa9e06
 
     public static $classMap = array (
         'AddPhotoIdToUsers' => __DIR__ . '/../..' . '/database/migrations/2017_03_09_165544_add_photo_id_to_users.php',
+        'AddSlugColumn' => __DIR__ . '/../..' . '/database/migrations/2017_03_24_222750_add_slug_column.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_13_100919_create_categories_table.php',
         'CreateCommentRepliesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_19_103646_create_comment_replies_table.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_19_103626_create_comments_table.php',

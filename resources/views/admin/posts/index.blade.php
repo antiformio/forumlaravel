@@ -45,7 +45,7 @@
                 <td>{{$post->created_at->diffForHumans()}}</td>
                 <td>{{$post->updated_at->diffForHumans()}}</td>
                 <td><a href="{{route('admin.users.show', $post->user->id)}}">{{$post->user->name}}</a></td>
-                <td><a href="{{route('home.post', $post->id)}}">Ver Post</a></td>
+                <td><a href="{{route('home.post', $post->slug)}}">Ver Post</a></td>
 
 
             </tr>

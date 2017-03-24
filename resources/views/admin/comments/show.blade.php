@@ -2,7 +2,7 @@
 
 @section('content')
     @if(count($comments) >0)
-    <h1>Comentários ao post <a href="{{route('home.post', $post->id)}}">{{$post->title}}</a></h1>
+    <h1>Comentários ao post <a href="{{route('home.post', $post->slug)}}">{{$post->title}}</a></h1>
 
     <div class="row">
 

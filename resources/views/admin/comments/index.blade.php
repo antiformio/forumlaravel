@@ -41,7 +41,7 @@
 
                         <tr>
                             <td>{{$comment->id}}</td>
-                            <td><a href="{{route('home.post',$comment->post->id )}}">{{$comment->post->title}}</a></td>
+                            <td><a href="{{route('home.post',$comment->post->slug )}}">{{$comment->post->title}}</a></td>
                             <td>{{$comment->is_active == 1 ? 'Activo' : 'Inactivo' }}</td>
                             <td>{{\Illuminate\Support\Str::words($comment->body,3)}}</td>
                             <td><a href="{{ route('admin.comments.replies.show', $comment->id) }}">Ver Respostas</a></td>
