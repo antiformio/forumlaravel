@@ -14,7 +14,7 @@
 use App\Category;
 use App\Post;
 
-// Página inicial que leva todos os posts por ordem descrescente de ID's e todas as categorias
+// Rotas para os users
 Route::get('/', function(){
 
     $posts = Post::orderBy('id','desc')->simplePaginate(2);
@@ -23,11 +23,11 @@ Route::get('/', function(){
 
 })->name('home.welcome');
 
+
+
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
 
-// Dar um nome à route (home.post) e dizer que usa aquele controller
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
 

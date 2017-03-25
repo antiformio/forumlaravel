@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests;
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,4 +28,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
 }
