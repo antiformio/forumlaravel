@@ -54,5 +54,14 @@
 
 
         </tbody>
-    </table
+    </table>
+
+
+    {{--Paginação de posts (ver método index do AdminPostsController e dar o numero de posts por parametro ao paginate--}}
+    <div class="row">
+        <div class="col-sm6 col-sm-offset-5">
+            {{$posts->render()}}
+
+        </div>
+    </div>
 @endsection

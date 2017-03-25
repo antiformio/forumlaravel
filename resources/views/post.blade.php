@@ -25,6 +25,12 @@
         @else
             by {{$post->user->name}}
         @endif
+        {{--Se estiver logado, mas nao for admin, mostra só o nome do poster sem link--}}
+        @if(Auth::check())
+            @if(!Auth::user()->isAdmin())
+                by {{$post->user->name}}
+            @endif
+        @endif
     </p>
 
     <hr>
@@ -77,6 +83,10 @@
                 {!! Form::close() !!}
 
     </div>
+    @else
+        <div class="alert alert-warning">
+            <small>Faça login ou registe-se para deixar comentários</small>
+        </div>
     @endif
     <hr>
 
@@ -146,7 +156,7 @@
                             @endif
                             @endforeach
 
-
+                            @if(Auth::check())
                             {{--No fim de todos os replies, mostra o botao de responder ao comentário--}}
                             <div class="comment-reply-container">
 
@@ -176,6 +186,8 @@
 
                                 </div>
                             </div>
+                                @endif
+
                     </div>
                 </div>
 
@@ -184,7 +196,7 @@
                 {{--Caso não haja replies ao comentário, então mostra directamente o formulário de submeter resposta ao comment--}}
                 <div class="comment-reply-container">
 
-
+                    @if(Auth::check())
                     <button class="toggle-reply btn btn-primary pull-left">Responder</button>{{--Ver/esconder form para responder ao comentário--}}
 
                     <div class="comment-reply">
@@ -209,6 +221,7 @@
                         {!! Form::close() !!}
 
                     </div>
+                        @endif
                 </div>
 
                 @endif

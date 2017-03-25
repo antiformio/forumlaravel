@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Category;
+use App\Post;
+
+// Página inicial que leva todos os posts por ordem descrescente de ID's e todas as categorias
+Route::get('/', function(){
+
+    $posts = Post::orderBy('id','desc')->simplePaginate(2);
+    $categories = Category::all();
+    return view('welcome', compact('posts','categories'));
+
+})->name('home.welcome');
 
 Route::auth();
 

@@ -49,16 +49,31 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">About</a>
+                    <a href="{{ route('home.welcome') }}">Página Inicial</a>
                 </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
+
                 <li>
                     <a href="#">Contact</a>
                 </li>
             </ul>
+            {{--Se o user estiver logado, acrescenta botao para fazer logout--}}
+            @if(Auth::check())
+            <ul class="nav navbar-nav pull-right">
+
+                <li> <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+            </ul>
+                {{--Se o user não estiver logado, acrescenta botao para fazer login e/ou registo--}}
+            @else
+                <ul class="nav navbar-nav pull-right">
+                     <li> <a href="{{ url('/register') }}">Register</a></li>
+                    <li> <a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
+                </ul>
+            @endif
         </div>
+
+
+
+
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
@@ -108,11 +123,7 @@
                 <!-- /.row -->
             </div>
 
-            <!-- Side Widget Well -->
-            <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-            </div>
+
 
         </div>
 
@@ -125,7 +136,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
+                <p>Copyright &copy; FilipeMartins 2017</p>
             </div>
         </div>
         <!-- /.row -->

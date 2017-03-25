@@ -86,5 +86,20 @@ class User extends Authenticatable
 
     }
 
+    /**
+     * getGravatarAttribute constroi um link com o email do user (codificado com md5)
+     *      e atravez desse email codificado vai ao site do gravatar buscar a imagem
+     *      associada ao perfil do utilizador
+     *
+     *      "?d=mm" é o mistery man, ou seja caso não haja uma foto associada, responde
+     *          com uma foto default do mistery man
+     */
+    public function getGravatarAttribute(){
+
+        $hash = md5(strtolower(trim($this->attributes['email']))) . "?d=mm";
+        return "http://www.gravatar.com/avatar/$hash";
+
+
+    }
 
 }
