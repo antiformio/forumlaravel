@@ -29,4 +29,13 @@ class Comment extends Model
         return $this->belongsTo('App\Post');
 
     }
+
+    //Dado o atributo author (é uma string), vai buscar o objecto utilizador que lhe corresponde
+    public function procuraAutor($autor){
+
+        $user = User::where('name', $autor)->first();
+
+        return $user;
+
+    }
 }

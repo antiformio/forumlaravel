@@ -57,14 +57,12 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
+
                 </a>
 
 
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
+
                     <li class="divider"></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
@@ -128,10 +126,12 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.users.index')}}">Listar Utilizadores</a>
+
                             </li>
 
                             <li>
                                 <a href="{{route('admin.users.create')}}">Criar Utilizador</a>
+
                             </li>
 
                         </ul>
@@ -143,14 +143,17 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.posts.index')}}">Listar Posts</a>
+
                             </li>
 
                             <li>
                                 <a href="{{route('admin.posts.create')}}">Criar Post</a>
+
                             </li>
 
                             <li>
                                 <a href="{{route('admin.comments.index')}}">Listar Comentarios</a>
+
                             </li>
 
 
@@ -166,6 +169,7 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.categories.index')}}">Listar/criar Categorias</a>
+
                             </li>
 
 
@@ -180,10 +184,12 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.media.index')}}">Listar Media</a>
+
                             </li>
 
                             <li>
                                <a href="{{route('admin.media.create')}}">Upload Media</a>
+
                             </li>
 
                         </ul>

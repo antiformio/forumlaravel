@@ -41,7 +41,7 @@ class AdminUsersController extends Controller
          * A estrutura da lista será key=>value, ou seja por exemplo:
          *              key=1 e value=administrador
          */
-        $roles=Role::lists('name','id')->all();
+        $roles=Role::pluck('name','id')->all();
 
         return view('admin.users.create', compact('roles'));
     }
@@ -106,7 +106,7 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $roles=Role::lists('name','id')->all();
+        $roles=Role::pluck('name','id')->all();
 
         return view('admin.users.edit',compact('user','roles'));
     }

@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 
+
+
+        @include('includes.form_errors') {{--Para adicionar o pedaço de código de verificação de erros--}}
+
+
+
     {{--Verificar se foram passadas flash messages do controller
             no controller é passado o parametro nome (message neste caso)
             outro que é a classe e por fim o info (ou é success, ou danger)--}}
@@ -9,35 +15,37 @@
             {{ Session::get('message') }}</p>
     @endif
 
-    <h1>Categorias</h1>
+    <div class="row">
+
+        <h1>Categorias</h1>
 
         <div class="col-sm-6">
 
 
-                    <h4>Criar Categoria</h4>
-                    {{--
-                        Abrir o formulário com o método POST para poder usar o store do controller.
-                            Consultar route:list
-                    --}}
-                    {!! Form::model(['method'=>'POST', 'action'=>'AdminCategoriesController@store'])  !!}
+            <h4>Criar Categoria</h4>
+            {{--
+                Abrir o formulário com o método POST para poder usar o store do controller.
+                    Consultar route:list
+            --}}
+            {!! Form::model(['method'=>'POST', 'action'=>'AdminCategoriesController@store'])  !!}
 
 
-                        {{-- O primeiro campo "name" tem de ser igual ao nome do atributo na Base de dados
-                                tanto no label como no text. Aplica-se a todos os nomes dos campos dos
-                                formularios. Ex. name, email, password, photo_id, role_id --}}
-                        <div class="form-group">
-                            {!! Form::label('name','Nome:') !!}
-                            {!! Form::text('name', null, ['class'=>'form-control']) !!}
-                        </div>
+            {{-- O primeiro campo "name" tem de ser igual ao nome do atributo na Base de dados
+                    tanto no label como no text. Aplica-se a todos os nomes dos campos dos
+                    formularios. Ex. name, email, password, photo_id, role_id --}}
+            <div class="form-group">
+                {!! Form::label('name','Nome:') !!}
+                {!! Form::text('name', null, ['class'=>'form-control']) !!}
+            </div>
 
 
 
-                        <div class="form-group">
-                            {!! Form::submit('Criar Categoria', ['class'=>'btn btn-primary']) !!}
-                        </div>
+            <div class="form-group">
+                {!! Form::submit('Criar Categoria', ['class'=>'btn btn-primary']) !!}
+            </div>
 
 
-                    {!! Form::close() !!}
+            {!! Form::close() !!}
 
         </div>
 
@@ -77,4 +85,10 @@
 
 
         </div>
+
+    </div>
+
+
+
+
     @endsection

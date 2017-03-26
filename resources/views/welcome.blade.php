@@ -1,5 +1,21 @@
 @extends('layouts.app')
 
+
+{{--
+
+
+
+HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
+
+
+
+
+--}}
+
+
+
+
+
 @section('content')
     <div class="container">
 
@@ -19,24 +35,30 @@
                     <a href="{{ route('home.post',$post->slug) }}">{{$post->title}}</a>
                 </h2>
                 <p class="lead">
-                    {{--Se o user estiver logado E for admin, então pode clicar no nome do user para ver o seu perfil--}}
+
+{{--Se o user estiver logado E for admin, então pode clicar no nome do user para ver o seu perfil--}}
+
                     @if(Auth::check())
                         @if(Auth::user()->isAdmin())
                             by <a href="{{route('admin.users.show',$post->user->id)}}">{{$post->user->name}}</a>
                         @endif
 
-                        {{--Se não estiver logado, mostra só o nome do poster sem link--}}
+
+{{--Se não estiver logado, mostra só o nome do poster sem link--}}
+
                     @else
                         by {{$post->user->name}}
                     @endif
-                    {{--Se estiver logado, mas nao for admin, mostra só o nome do poster sem link--}}
+
+{{--Se estiver logado, mas nao for admin, mostra só o nome do poster sem link--}}
+
                     @if(Auth::check())
                         @if(!Auth::user()->isAdmin())
                             by {{$post->user->name}}
                         @endif
                     @endif
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span>{{$post->created_at}}</p>
+                <p><span class="glyphicon glyphicon-time"></span> Criado a {{$post->created_at}}</p>
                 <hr>
                     <img height="300" width="700" class="img-responsive" src="{{$post->photo->file}}" alt="">
                 <hr>
@@ -45,7 +67,9 @@
 
                 <hr>
                 @endforeach
-                {{--Paginação de posts--}}
+
+{{--Paginação de posts--}}
+
                 <div class="pager">
                     <div class="col-sm9">
                         {{$posts->render()}}
@@ -92,11 +116,13 @@
                 </div>
 
                 <!-- Side Widget Well -->
-                {{--<div class="well">
+
+{{--<div class="well">
                     <h4>Side Widget Well</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
 --}}
+
             </div>
 
         </div>
@@ -117,3 +143,5 @@
 
     </div>
 @endsection
+
+

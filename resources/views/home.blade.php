@@ -1,17 +1,28 @@
-{{--@extends('layouts.app')
+@extends('layouts.app')
 
+
+{{--
+
+
+
+PÁGINA DE BOAS VINDAS (DEOPOIS DO LOGIN)
+
+
+
+
+--}}
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                   <h1>Bem vindo {{Auth::user()->name}}</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection--}}
+@endsection

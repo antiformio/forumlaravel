@@ -45,7 +45,7 @@
                             <td>{{$comment->is_active == 1 ? 'Activo' : 'Inactivo' }}</td>
                             <td>{{\Illuminate\Support\Str::words($comment->body,3)}}</td>
                             <td><a href="{{ route('admin.comments.replies.show', $comment->id) }}">Ver Respostas</a></td>
-                            <td><a href="{{route('admin.users.show',$comment->post->user_id)}}">{{$comment->author}}</a></td>
+                            <td><a href="{{route('admin.users.show',$comment->procuraAutor($comment->author))}}">{{$comment->author}}</a></td>
                             <td>{{$comment->email}}</td>
                             <td>{{$comment->created_at->diffForHumans()}}</td>
                             <td>

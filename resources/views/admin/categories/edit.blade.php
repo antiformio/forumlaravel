@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('content')
 
+
+
+        @include('includes.form_errors') {{--Para adicionar o pedaço de código de verificação de erros--}}
+
+
 <div class="row">
 
     <h1>Editar Categoria</h1>
@@ -55,6 +60,7 @@
 
 
 </div>
+
 
 
 
