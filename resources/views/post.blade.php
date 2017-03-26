@@ -236,9 +236,19 @@
 
 
 @section('categories')
-    @foreach($categories as $category)
-        <li>{{$category->name}}</li>
-    @endforeach
+    <div class="row well">
+        <h4>Categorias</h4>
+        @foreach($categories->chunk(5) as $chunckedCategories)
+
+            <div class="col-md-6">
+                @foreach($chunckedCategories as $category)
+                    <a href="{{route('tagged.posts',$category->id)}}"><li>{{$category->name}}</a></li>
+                @endforeach
+            </div>
+
+        @endforeach
+
+    </div>
 
 @endsection
 

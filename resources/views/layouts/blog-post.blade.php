@@ -96,7 +96,7 @@
         <div class="col-md-4">
 
             <!-- Blog Search Well -->
-            <div class="well">
+            <div class="row well">
                 <h4>Blog Search</h4>
                 <div class="input-group">
                     <input type="text" class="form-control">
@@ -110,18 +110,8 @@
             </div>
 
             <!-- Blog Categories Well -->
-            <div class="well">
-                <h4>Categorias</h4>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            @yield('categories')
-                        </ul>
-                    </div>
+            @yield('categories')
 
-                </div>
-                <!-- /.row -->
-            </div>
 
 
 

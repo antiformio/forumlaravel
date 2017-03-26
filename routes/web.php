@@ -29,6 +29,7 @@ Route::get('/', function(){
 
 
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+Route::get('/post/tag/{tag}', ['as' => 'tagged.posts', 'uses' => 'AdminPostsController@getPostsByTag']);
 
 
 

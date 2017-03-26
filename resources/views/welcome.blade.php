@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 
+
 {{--
 
 
@@ -58,7 +59,7 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                         @endif
                     @endif
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span> Criado a {{$post->created_at}}</p>
+                <p><span class="glyphicon glyphicon-time"></span> Criado {{$post->created_at->diffForHumans()}}</p>
                 <hr>
                     <img height="300" width="700" class="img-responsive" src="{{$post->photo->file}}" alt="">
                 <hr>
@@ -85,7 +86,7 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
             <div class="col-md-4">
 
                 <!-- Blog Search Well -->
-                <div class="well">
+                <div class="row well">
                     <h4>Blog Search</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
@@ -98,20 +99,18 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                     <!-- /.input-group -->
                 </div>
 
-                <!-- Blog Categories Well -->
-                <div class="well">
+                <!-- Blog Categories Well --> {{--Parte a lista em grupos de 5 --}}
+                <div class="row well">
                     <h4>Categorias</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                @foreach($categories as $category)
-                                <li>{{$category->name}}</li>
-                                    @endforeach
-                            </ul>
-                        </div>
+                                @foreach($categories->chunk(5) as $chunckedCategories)
 
+                                     <div class="col-md-6">
+                                         @foreach($chunckedCategories as $category)
+                                             <a href="{{route('tagged.posts',$category->id)}}"><li>{{$category->name}}</a></li>
+                                         @endforeach
+                                     </div>
 
-                    </div>
+                                @endforeach
 
                 </div>
 

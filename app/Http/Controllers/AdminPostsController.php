@@ -209,6 +209,14 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
     }
 
+
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     *
+     * Procura o post pelo slug name, junta as categorias e os comentários (activos) e envia para a vista post
+     */
     public function post($slug){
 
         $post = Post::findBySlugOrFail($slug);
@@ -217,6 +225,23 @@ class AdminPostsController extends Controller
 
         return view('post',compact('post','categories','comments'));
 
+
+    }
+
+    /**
+     * @param $idCategoria
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     *
+     * Recebe um id de uma categoria e procura todos os posts que têm essa categoria.
+     *  Envia o resultado para a welcome
+     */
+    public function getPostsByTag($idCategoria){
+        $posts = Post::where('category_id',$idCategoria)->orderBy('id','desc')->paginate(2);
+        $categories = Category::all();
+
+
+        return view('welcome',compact('posts','categories'));
 
     }
 
