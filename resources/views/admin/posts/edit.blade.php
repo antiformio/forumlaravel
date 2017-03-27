@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.tinyeditor')
+
     <h1>Editar Post</h1>
 
 

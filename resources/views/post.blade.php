@@ -46,7 +46,8 @@
     <hr>
 
     <!-- Post Content -->
-    <p class="lead">{{$post->body}}
+    {{--Terá que ser com os pontos de interrogação porque o body pode ser uma imagem feita com upload pelo file manager--}}
+    <p>{!! $post->body !!}</p>
     <hr>
 
     <!-- Blog Comments -->

@@ -9,7 +9,9 @@
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.3.*",
         "doctrine/dbal": "2.4.*",
-        "cviebrock/eloquent-sluggable": "^4.1"
+        "cviebrock/eloquent-sluggable": "^4.1",
+        "unisharp/laravel-filemanager": "^1.7",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

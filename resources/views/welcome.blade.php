@@ -20,6 +20,8 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
 @section('content')
     <div class="container">
 
+        @if(count($posts)>0)
+
         <div class="row">
 
             <!-- Blog Entries Column -->
@@ -30,7 +32,9 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                     <small>Let´s talk about code...</small>
                 </h1>
 
+
                 <!-- First Blog Post -->
+
                 @foreach($posts as $post)
                 <h2>
                     <a href="{{ route('home.post',$post->slug) }}">{{$post->title}}</a>
@@ -128,7 +132,14 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
         <!-- /.row -->
 
         <hr>
+            @else
+            <div class="no-posts">
 
+                <h1>Não existem posts para mostrar...</h1>
+
+            </div>
+
+            @endif
         <!-- Footer -->
         <footer>
             <div class="row">

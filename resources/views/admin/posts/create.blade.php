@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @include('includes.tinyeditor')
+
     <h1>Criar Post</h1>
 
         {{--
