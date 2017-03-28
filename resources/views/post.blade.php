@@ -4,6 +4,7 @@
     @endsection
 @section('content')
 
+    @include('includes.tinyeditor')
 
     <!-- Title -->
     <h1>{{$post->title}}</h1>
@@ -50,24 +51,48 @@
     <p>{!! $post->body !!}</p>
     <hr>
 
-    <!-- Blog Comments -->
+    <div id="disqus_thread">
+    <script>
 
-    {{--Só permite ver esta caixa de enviar comentário se o user estiver logado--}}
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+         var disqus_config = function () {
+         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+         };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://projecto.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//projecto.disqus.com/count.js" async></script>
+    </div>
+    {{-- <!-- Blog Comments -->
+
+    {{--Está comentado o sistema de comments antigo. Agora usamos disqus--}}
+
+    {{--Só permite ver esta caixa de enviar comentário se o user estiver logado--}}{{--
     @if(Auth::check())
     <!-- Comments Form -->
     <div class="well">
         <h4>Deixe um Commentário:</h4>
 
-            {{--
+            --}}{{--
                     Abrir o formulário com o método POST para poder usar o store do controller.
                         Consultar route:list
-                --}}
+                --}}{{--
                 {!! Form::open(['method'=>'POST', 'action'=>'PostCommentsController@store'])  !!}
 
 
-                    {{--Este campo serve para enviar ao controlador a informação sobre o id do post
+                    --}}{{--Este campo serve para enviar ao controlador a informação sobre o id do post
                         Este input não vai aparecer na pagina de acrescentar o comentario, pois está como hidden
-                           mas precisamos desta informação para criar o comentario...--}}
+                           mas precisamos desta informação para criar o comentario...--}}{{--
 
                     <input type="hidden" name="post_id" value="{{$post->id}}">
 
@@ -77,7 +102,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::submit('Criar Comentário', ['class'=>'btn btn-primary']) !!}
+                        {!! Form::submit('Criar Comentário', ['class'=>'btn btn-primary btn-sm']) !!}
                     </div>
 
 
@@ -107,7 +132,7 @@
             <h4 class="media-heading">{{$comment->author}}
                 <small>{{$comment->created_at->diffForHumans()}}</small>
             </h4>
-            <p>{{$comment->body}}</p>
+            {!! $comment->body !!}
 
 
 
@@ -115,7 +140,7 @@
 
 
 
-            {{--Comment Replies ("Nested Comment"--}}
+            --}}{{--Comment Replies ("Nested Comment"--}}{{--
 
 
 
@@ -125,7 +150,7 @@
                 <div class="view-comments-container">
 
 
-                    <button class="toggle-comments btn btn-info pull-right">Ver Respostas</button> {{--Ver/Esconder replies ao comentário--}}
+                    <button class="toggle-comments btn btn-primary btn-xs pull-right">Ver Respostas</button> --}}{{--Ver/Esconder replies ao comentário--}}{{--
 
 
 
@@ -145,7 +170,7 @@
                                         <h4 class="media-heading">{{$reply->author}}
                                             <small>{{$reply->created_at->diffForHumans()}}</small>
                                         </h4>
-                                        {{$reply->body}}
+                                        {!! $reply->body !!}
                                     </div>
 
 
@@ -158,11 +183,11 @@
                             @endforeach
 
                             @if(Auth::check())
-                            {{--No fim de todos os replies, mostra o botao de responder ao comentário--}}
+                            --}}{{--No fim de todos os replies, mostra o botao de responder ao comentário--}}{{--
                             <div class="comment-reply-container">
 
 
-                                <button class="toggle-reply btn btn-primary pull-left">Responder</button>{{--Ver/esconder form para responder ao comentário--}}
+                                <button class="toggle-reply btn btn-primary btn-xs pull-left">Responder</button>--}}{{--Ver/esconder form para responder ao comentário--}}{{--
 
                                 <div class="comment-reply">
 
@@ -179,7 +204,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary']) !!}
+                                        {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary btn-sm']) !!}
                                     </div>
 
 
@@ -194,11 +219,11 @@
 
 
             @else
-                {{--Caso não haja replies ao comentário, então mostra directamente o formulário de submeter resposta ao comment--}}
+                --}}{{--Caso não haja replies ao comentário, então mostra directamente o formulário de submeter resposta ao comment--}}{{--
                 <div class="comment-reply-container">
 
                     @if(Auth::check())
-                    <button class="toggle-reply btn btn-primary pull-left">Responder</button>{{--Ver/esconder form para responder ao comentário--}}
+                    <button class="toggle-reply btn btn-primary btn-xs pull-left">Responder</button>--}}{{--Ver/esconder form para responder ao comentário--}}{{--
 
                     <div class="comment-reply">
 
@@ -215,7 +240,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary']) !!}
+                            {!! Form::submit('Submeter Resposta', ['class'=>'btn btn-primary btn-sm']) !!}
                         </div>
 
 
@@ -232,7 +257,7 @@
 
     @endforeach
     @endif
-
+--}}
 @endsection
 
 
@@ -243,7 +268,7 @@
 
             <div class="col-md-6">
                 @foreach($chunckedCategories as $category)
-                    <a href="{{route('tagged.posts',$category->id)}}"><li>{{$category->name}}</a></li>
+                    <a href="{{route('tagged.posts',$category->id)}}"><li>{{$category->name}}</li></a>
                 @endforeach
             </div>
 
@@ -253,10 +278,12 @@
 
 @endsection
 
-@section('scripts')
+{{--Estes são os scripts dos botoes antigos para mostrar e esconder comentários. Agora usamos o disqus--}}
+
+{{--@section('scripts')
 
 
-    <script> {{--Script para mostrar o formulario para responder ao comentário--}}
+    <script> --}}{{--Script para mostrar o formulario para responder ao comentário--}}{{--
 
         $(".comment-reply-container .toggle-reply").click(function(){
 
@@ -266,7 +293,7 @@
 
     </script>
 
-    <script> {{--Script para mostrar todos os replies ao comentário--}}
+    <script> --}}{{--Script para mostrar todos os replies ao comentário--}}{{--
 
         $(".view-comments-container .toggle-comments").click(function(){
 
@@ -276,7 +303,7 @@
 
     </script>
 
-    <script> {{--Script para mudar o nome do butão de ver respostas para esconder respostas--}}
+    <script> --}}{{--Script para mudar o nome do butão de ver respostas para esconder respostas--}}{{--
 
         $('.toggle-comments').click(function(){
             var $this = $(this);
@@ -289,7 +316,7 @@
         });
     </script>
 
-    <script> {{--Script para esconder o butão "Responder" deopois de clicado--}}
+    <script> --}}{{--Script para esconder o butão "Responder" deopois de clicado--}}{{--
 
         $(function(){
             $(".toggle-reply").on('click',function() {
@@ -302,6 +329,6 @@
 
 
 
-@endsection
+@endsection--}}
 
 @include('includes.form_errors') {{--Para adicionar o pedaço de código de verificação de erros--}}

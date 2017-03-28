@@ -21,7 +21,7 @@ use App\Post;
 //----------------------------------------------------------------------------------------------------------------------
 Route::get('/', function(){
 
-    $posts = Post::orderBy('id','desc')->simplePaginate(2);
+    $posts = Post::orderBy('id','desc')->Paginate(2);
     $categories = Category::all();
     return view('welcome', compact('posts','categories'));
 

@@ -40,7 +40,7 @@
                 <td><img height="50" src="{{$post->photo->file}}"></td>
                 <td>{{$post->category ? $post->category->name : 'Sem Categoria'}}</td>
                 <td><a href=" {{ route('admin.posts.edit',$post->id) }}">{{$post->title}}</a></td>
-                <td>{{\Illuminate\Support\Str::words($post->body,4)}}</td>
+                <td>{{\Illuminate\Support\Str::words(strip_tags($post->body),4)}}</td>
                 <td><a href="{{route('admin.comments.show',$post->id)}}">Ver Comentários</a></td>
                 <td>{{$post->created_at->diffForHumans()}}</td>
                 <td>{{$post->updated_at->diffForHumans()}}</td>

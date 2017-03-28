@@ -22,7 +22,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(2);
+        $posts = Post::orderBy('id','desc')->Paginate(4);
 
 
         return view('admin.posts.index',compact('posts'));

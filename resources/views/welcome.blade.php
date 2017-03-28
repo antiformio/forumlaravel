@@ -18,6 +18,8 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
 
 
 @section('content')
+
+
     <div class="container">
 
         @if(count($posts)>0)
@@ -67,10 +69,17 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                 <hr>
                     <img height="300" width="700" class="img-responsive" src="{{$post->photo->file}}" alt="">
                 <hr>
-                    <p class="lead">{{\Illuminate\Support\Str::words($post->body,4)}}
+                    <p class="lead">{{\Illuminate\Support\Str::words(strip_tags($post->body),6)}}
                 <p><a class="btn btn-primary" href="{{ route('home.post',$post->slug) }}">Ler Mais <span class="glyphicon glyphicon-chevron-right"></span></a></p>
 
-                <hr>
+
+
+
+
+
+
+                    <hr>
+
                 @endforeach
 
 {{--Paginação de posts--}}
@@ -153,5 +162,6 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
 
     </div>
 @endsection
+
 
 
