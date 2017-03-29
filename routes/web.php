@@ -108,6 +108,8 @@ Route::group(['middleware'=>'admin'],function (){
 
 
     ]]);
+
+
     Route::resource('admin/media','AdminMediasController',['names'=>[
 
         'index'=>'admin.media.index',
@@ -119,6 +121,9 @@ Route::group(['middleware'=>'admin'],function (){
 
 
     ]]);
+
+
+
     Route::resource('admin/comments','PostCommentsController',['names'=>[
 
         'index'=>'admin.comments.index',
