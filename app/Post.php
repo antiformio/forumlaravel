@@ -79,5 +79,13 @@ class Post extends Model
 
     }
 
+    public static function scopeProcuraPorTag($query,$idCategoria){
+
+        return $query->where('category_id',$idCategoria)->orderBy('id','desc')->paginate(2);
+
+
+    }
+
+
 
 }

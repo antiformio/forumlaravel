@@ -19,7 +19,15 @@ use App\Post;
 //----------------------------------------------------------------------------------------------------------------------
 //ROTAS PARA O USER NÃO AUTENTICADO
 //----------------------------------------------------------------------------------------------------------------------
+// Página inicial
 Route::get('/', function(){
+    $posts = Post::orderBy('id','desc')->take(4)->get();
+    return view('entrada',compact('posts'));
+
+});
+
+// Página do blog
+Route::get('/blog', function(){
 
     $posts = Post::orderBy('id','desc')->Paginate(2);
     $categories = Category::all();
@@ -28,8 +36,10 @@ Route::get('/', function(){
 })->name('home.welcome');
 
 
-Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
-Route::get('/post/tag/{tag}', ['as' => 'tagged.posts', 'uses' => 'AdminPostsController@getPostsByTag']);
+
+
+Route::get('/post/{id}','AdminPostsController@post')->name('home.post');
+Route::get('/post/tag/{tag}','AdminPostsController@getPostsByTag')->name('tagged.posts');
 
 
 

@@ -13,9 +13,12 @@
 
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
-    <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/libs.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

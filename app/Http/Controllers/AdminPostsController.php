@@ -237,7 +237,8 @@ class AdminPostsController extends Controller
      *  Envia o resultado para a welcome
      */
     public function getPostsByTag($idCategoria){
-        $posts = Post::where('category_id',$idCategoria)->orderBy('id','desc')->paginate(2);
+
+        $posts = Post::procuraPorTag($idCategoria);
         $categories = Category::all();
 
 
