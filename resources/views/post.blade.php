@@ -4,7 +4,9 @@
     @endsection
 @section('content')
 
-    @include('includes.tinyeditor')
+
+
+
 
     <!-- Title -->
     <h1>{{$post->title}}</h1>
