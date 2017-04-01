@@ -70,7 +70,8 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                     <img height="300" width="700" class="img-responsive" src="{{$post->photo->file}}" alt="">
                 <hr>
                     <p class="lead">{{\Illuminate\Support\Str::words(strip_tags($post->body),6)}}
-                <p><a class="btn btn-primary" href="{{ route('home.post',$post->slug) }}">Ler Mais <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+
+                    <p><a class="btn btn-primary" href="{{ route('home.post',$post->slug) }}">Ler Mais <span class="glyphicon glyphicon-chevron-right"></span></a></p>
 
 
 
@@ -124,6 +125,16 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                                      </div>
 
                                 @endforeach
+
+                </div>
+
+                <div class="row well">
+                    <h4>Instagram</h4>
+                    <div class="input-group">
+                        <!-- InstaWidget -->
+                        <a href="https://instawidget.net/v/user/filipemrtns" id="link-4d3a6ebc795c25580a78390f89d3f84021422df9ad24d4e96d6147bb7926740d">@filipemrtns</a>
+                        <script src="https://instawidget.net/js/instawidget.js?u=4d3a6ebc795c25580a78390f89d3f84021422df9ad24d4e96d6147bb7926740d&width=300px"></script>
+                    </div>
 
                 </div>
 

@@ -9,6 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    {{--    Para administrar os comentários     --}}
+    <meta property="fb:admins" content="{filipenechom}"/>
+
     {{--favicon--}}
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -118,7 +121,15 @@
 
             <!-- Blog Categories Well -->
             @yield('categories')
+            <div class="row well">
+                <h4>Instagram</h4>
+                <div class="input-group">
+                    <!-- InstaWidget -->
+                    <a href="https://instawidget.net/v/user/filipemrtns" id="link-4d3a6ebc795c25580a78390f89d3f84021422df9ad24d4e96d6147bb7926740d">@filipemrtns</a>
+                    <script src="https://instawidget.net/js/instawidget.js?u=4d3a6ebc795c25580a78390f89d3f84021422df9ad24d4e96d6147bb7926740d&width=300px"></script>
+                </div>
 
+            </div>
 
 
 

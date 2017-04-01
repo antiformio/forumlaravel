@@ -53,7 +53,16 @@
     <p>{!! $post->body !!}</p>
     <hr>
 
-    <div id="disqus_thread">
+
+
+
+
+    {{--                                           DISQUS                                            --}}
+
+
+
+
+   {{-- <div id="disqus_thread">
     <script>
 
         /**
@@ -74,7 +83,30 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <script id="dsq-count-scr" src="//projecto.disqus.com/count.js" async></script>
-    </div>
+    </div>--}}
+
+
+
+
+
+
+
+    {{--                                        FACEBOOK (Isto mais o script no final da página)                                                        --}}
+    {{--                                        + o que está no topo do layout.blog-post (a tag meta com o nome do perfil do administrador dos comments) --}}
+
+    <div class="fb-comments" data-href="http://projecto.dev/post/{{$post->slug}}" data-width="100%" data-numposts="5"></div>
+
+
+
+
+
+
+
+
+
+    {{--                                    SISTEMA DE COMMENTS ADMINISTRADOS PELA PAGINA                       --}}
+
+
     {{-- <!-- Blog Comments -->
 
     {{--Está comentado o sistema de comments antigo. Agora usamos disqus--}}
@@ -261,6 +293,26 @@
     @endif
 --}}
 @endsection
+
+
+
+@section('scripts')
+
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+    @endsection
+
+
 
 
 @section('categories')

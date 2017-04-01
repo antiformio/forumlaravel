@@ -67,9 +67,10 @@
         <article class="item">
             <header>
                 <a href="{{ route('home.post',$post->slug) }}"><img src="{{$post->photo->file}}" alt="" /></a>
-                <h3>{{$post->slug}}</h3>
+                <h3>{{$post->title}}</h3>
             </header>
             <p>{{strip_tags($post->body)}}</p>
+
             <ul class="actions">
                 <li><a href="{{ route('home.post',$post->slug) }}" class="button">Ler Mais</a></li>
             </ul>
