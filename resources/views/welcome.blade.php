@@ -132,8 +132,9 @@ HOMEPAGE (PARA TODOS OS UTILIZADORES, LOGADOS OU NÃO)
                     <h4>Instagram</h4>
                     <div class="input-group">
                         <!-- InstaWidget -->
-                        <a href="https://instawidget.net/v/user/filipemrtns" id="link-4d3a6ebc795c25580a78390f89d3f84021422df9ad24d4e96d6147bb7926740d">@filipemrtns</a>
-                        <script src="https://instawidget.net/js/instawidget.js?u=4d3a6ebc795c25580a78390f89d3f84021422df9ad24d4e96d6147bb7926740d&width=300px"></script>
+
+                        <a href="https://instawidget.net/v/user/filipemrtns" id="link-4275388c2fab934594f97b3e3270091f74f67aa0c8e8962b87395237939cbde3">@filipemrtns</a>
+                        <script src="https://instawidget.net/js/instawidget.js?u=4275388c2fab934594f97b3e3270091f74f67aa0c8e8962b87395237939cbde3&width=300px"></script>
                     </div>
 
                 </div>
