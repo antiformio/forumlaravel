@@ -22,8 +22,8 @@ use App\Post;
 // Página inicial
 
 Route::get('/',function(){
-
-    return view('index-blog');
+    $posts = Post::orderBy('id','desc')->Paginate(4);
+    return view('index-blog',compact('posts'));
 
 
 });
