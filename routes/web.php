@@ -20,6 +20,15 @@ use App\Post;
 //ROTAS PARA O USER NÃO AUTENTICADO
 //----------------------------------------------------------------------------------------------------------------------
 // Página inicial
+/*
+Route::get('/',function(){
+
+    return view('index-blog');
+
+
+});*/
+
+
 Route::get('/', function(){
     $posts = Post::orderBy('id','desc')->take(4)->get();
     return view('entrada',compact('posts'));
