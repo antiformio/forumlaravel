@@ -100,16 +100,21 @@
 
                 <!-- Posts
                 ============================================= -->
-                <div id="posts">
+                <div id="posts" class="small-thumbs">
 
                     @foreach($posts as $post)
                     <div class="entry clearfix">
                         <div class="entry-image">
                             <a href="{{$post->photo->file}}" data-lightbox="image"><img class="image_fade" src="{{$post->photo->file}}" alt="Standard Post with Image"></a>
                         </div>
-                        <div class="entry-title">
-                            <h2><a href="blog-single.html">{{$post->title}}</a></h2>
-                        </div>
+                        <div class="entry-c">
+                            <div class="entry-title">
+
+                                <h2><a href="blog-single.html">{{$post->title}}</a></h2>
+
+                            </div>
+
+
                         <ul class="entry-meta clearfix">
                             <li><i class="icon-calendar3"></i> {{$post->created_at->diffForHumans()}}</li>
                             <li><a href="#"><i class="icon-user"></i> {{$post->user->name}}</a></li>
@@ -121,6 +126,7 @@
                             <p>{{\Illuminate\Support\Str::words(strip_tags($post->body),6)}}</p>
                             <a href="blog-single.html"class="more-link">Ler Mais</a>
                         </div>
+                    </div>
                     </div>
 
                 @endforeach
