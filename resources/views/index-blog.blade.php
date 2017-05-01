@@ -25,7 +25,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Code Blog - Filipe Martins</title>
+    <title>BE - Alijó</title>
 
 </head>
 
@@ -44,34 +44,34 @@
 
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
-                <div class="swiper-slide dark" style="background-image: url('images/banner.jpg');">
+                <div class="swiper-slide" style="background-image: url('images/1491242720bloco-banner.png');">
                     <div class="container clearfix">
                         <div class="slider-caption slider-caption-center">
-                            <h2 data-caption-animate="fadeInUp">Code Talks</h2>
-                            <p data-caption-animate="fadeInUp" data-caption-delay="200">Let´s talk about code &amp; much more...</p>
+                            <h2 data-caption-animate="fadeInUp"></h2>
+                            <p data-caption-animate="fadeInUp" data-caption-delay="200"></p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide dark">
                     <div class="container clearfix">
                         <div class="slider-caption slider-caption-center">
-                            <h2 data-caption-animate="fadeInUp">Tuturiais sobre Laravel</h2>
-                            <p data-caption-animate="fadeInUp" data-caption-delay="200">Videos &amp; outros suportes mídia code related.</p>
+                            <h2 data-caption-animate="fadeInUp">Estamos cá pelas pessoas</h2>
+                            <p data-caption-animate="fadeInUp" data-caption-delay="200">Viver feliz &amp; num concelho vivo.</p>
                         </div>
                     </div>
                     <div class="video-wrap">
                         <video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
-                            <source src='images/1491150870code2.mp4' type='video/mp4' />
+                            <source src='images/1491244571video-3.mp4' type='video/mp4' />
                             <source src='images/videos/explore.webm' type='video/webm' />
                         </video>
                         <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
                     </div>
                 </div>
-                <div class="swiper-slide" style="background-image: url('images/1491209026code3.jpg'); background-position: center top;">
+                <div class="swiper-slide dark" style="background-image: url('images/1491243777alijo-centro.png'); background-position: center top;">
                     <div class="container clearfix">
                         <div class="slider-caption">
-                            <h2 data-caption-animate="fadeInUp" style="color: #1ABC9C">Filipe Martins</h2>
-                            <p data-caption-animate="fadeInUp" data-caption-delay="200">Estudante de Engenharia Informática no Instituto Superior de Engenharia do Porto</p>
+                            <h2 data-caption-animate="fadeInUp">Junte-se a nós!</h2>
+                            <p data-caption-animate="fadeInUp" data-caption-delay="200">Pelo Concelho, estamos de braços abertos às pessoas. </p>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                             <li><a href="#"><i class="icon-camera-retro"></i></a></li>
                         </ul>
                         <div class="entry-content">
-                            <p>{{\Illuminate\Support\Str::words(strip_tags($post->body),6)}}</p>
+                            <p>{{\Illuminate\Support\Str::words(strip_tags($post->body),40)}}</p>
                             <a href="blog-single.html"class="more-link">Ler Mais</a>
                         </div>
                     </div>
@@ -205,6 +205,8 @@
 
                     </div>
 
+
+
                 </div>
 
                 <div class="col_one_third col_last">
@@ -250,7 +252,7 @@
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>O meu perfil</strong><br>no Facebook</small></a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Visite-nos</strong><br>no Facebook</small></a>
                             </div>
 
 
